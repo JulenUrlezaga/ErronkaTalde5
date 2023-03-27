@@ -1,5 +1,5 @@
 package Klaseak;
-
+import java.util.Scanner;
 public class Bezeroa {
 private String NAN;
 	private String Izena;
