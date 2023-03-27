@@ -8,7 +8,7 @@ public class Bezeroa {
 	private String Abizenak;
 	private String Telefono;
 	private String Email;
-	private int OrdainketaMetedoa;
+	private int Ordainketa_Metedoa;
 
 	public Bezeroa() {
 		this.NAN = "";
@@ -16,7 +16,7 @@ public class Bezeroa {
 		this.Abizenak = "";
 		this.Telefono = "";
 		this.Email = "";
-		this.OrdainketaMetedoa = 0;
+		this.Ordainketa_Metedoa = 0;
 	}
 	public Bezeroa(String n,String iz,String ab, String te, String em, int orme) {
 		this.NAN=n;
@@ -24,7 +24,7 @@ public class Bezeroa {
 		this.Abizenak=ab;
 		this.Telefono=te;
 		this.Email=em;
-		this.OrdainketaMetedoa=orme;
+		this.Ordainketa_Metedoa=orme;
 	}
 	public String getNAN() {
 		return NAN;
@@ -56,14 +56,14 @@ public class Bezeroa {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public int getOrdainketaMetedoa() {
-		return OrdainketaMetedoa;
+	public int getOrdainketa_Metedoa() {
+		return Ordainketa_Metedoa;
 	}
-	public void setOrdainketaMetedoa(int ordainketaMetedoa) {
-		OrdainketaMetedoa = ordainketaMetedoa;
+	public void setOrdainketaMetedoa(int ordainketa_Metedoa) {
+		Ordainketa_Metedoa = ordainketa_Metedoa;
 	}
 	public void PantailaratuBezero() {
-		System.out.println("NAN :"+this.NAN+", izena : "+this.Izena+", Abizenak : "+this.Abizenak+", telefonoa : "+this.Telefono+", email-a : "+this.Email+", Ordainketa : "+this.OrdainketaMetedoa);
+		System.out.println("NAN :"+this.NAN+", izena : "+this.Izena+", Abizenak : "+this.Abizenak+", telefonoa : "+this.Telefono+", email-a : "+this.Email+", Ordainketa : "+this.Ordainketa_Metedoa);
 	}
 	public void IrakurriBezero(Scanner teklatua) {
 		System.out.println("NAN :");
@@ -77,6 +77,6 @@ public class Bezeroa {
 		System.out.println("email kontua:");
 		this.Email=teklatua.next();
 		System.out.println("ordainketa kontua zenbakia");
-		this.OrdainketaMetedoa=teklatua.nextInt();
+		this.Ordainketa_Metedoa=teklatua.nextInt();
 	}
 }

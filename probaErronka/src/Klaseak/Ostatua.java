@@ -3,28 +3,28 @@ package Klaseak;
 import java.util.Scanner;
 
 public class Ostatua {
-	private int IdOstatua;
+	private int ID_Ostatua;
 	private String lekua;
-	private String ostatuMota;
+	private String ostatu_Mota;
 
 	public Ostatua() {
-		this.IdOstatua = 0;
+		this.ID_Ostatua = 0;
 		this.lekua = "";
-		this.ostatuMota = "";
+		this.ostatu_Mota = "";
 	}
 
 	public Ostatua(int id, String le, String oM) {
-		this.IdOstatua = id;
+		this.ID_Ostatua = id;
 		this.lekua = le;
-		this.ostatuMota = oM;
+		this.ostatu_Mota = oM;
 	}
 
-	public int getIdOstatua() {
-		return IdOstatua;
+	public int getID_Ostatua() {
+		return ID_Ostatua;
 	}
 
-	public void setIdOstatua(int idOstatua) {
-		IdOstatua = idOstatua;
+	public void setID_Ostatua(int idOstatua) {
+		ID_Ostatua = idOstatua;
 	}
 
 	public String getLekua() {
@@ -35,24 +35,24 @@ public class Ostatua {
 		this.lekua = lekua;
 	}
 
-	public String getOstatuMota() {
-		return ostatuMota;
+	public String getOstatu_Mota() {
+		return ostatu_Mota;
 	}
 
-	public void setOstatuMota(String ostatuMota) {
-		this.ostatuMota = ostatuMota;
+	public void setOstatu_Mota(String ostatuMota) {
+		this.ostatu_Mota = ostatuMota;
 	}
 
 	public void PantailaratuOstuta() {
-		System.out.println("ID :" + this.IdOstatua + ", non dago :" + this.lekua + ", Zer da :" + this.ostatuMota);
+		System.out.println("ID :" + this.ID_Ostatua + ", non dago :" + this.lekua + ", Zer da :" + this.ostatu_Mota);
 	}
 	
 	public void IrakurriOstatua(Scanner teklatua) {
 		System.out.println("ID : ");
-		this.IdOstatua=teklatua.nextInt();
+		this.ID_Ostatua=teklatua.nextInt();
 		System.out.println("Non dago :");
 		this.lekua=teklatua.next();
 		System.out.println("Zer heraikin mota da :");
-		this.ostatuMota=teklatua.next();
+		this.ostatu_Mota=teklatua.next();
 	}
 }
