@@ -59,8 +59,8 @@ public class Bezeroa {
 	public int getOrdainketa_Metodoa() {
 		return Ordainketa_Metodoa;
 	}
-	public void setOrdainketaMetedoa(int ordainketa_Metodoa) {
-		Ordainketa_Metodoa = ordainketa_Metodoa;
+	public void setOrdainketa_Metodoa(int ordainketa_Metedoa) {
+		Ordainketa_Metodoa = ordainketa_Metedoa;
 	}
 	public void PantailaratuBezero() {
 		System.out.println("NAN :"+this.NAN+", izena : "+this.Izena+", Abizenak : "+this.Abizenak+", telefonoa : "+this.Telefono+", email-a : "+this.Email+", Ordainketa : "+this.Ordainketa_Metodoa);
@@ -72,11 +72,11 @@ public class Bezeroa {
 		this.Izena=teklatua.next();
 		System.out.println("Abizenak :");
 		this.Abizenak=teklatua.next();
-		System.out.println("Telefono zenbakia :");
+		System.out.println("Telofono zenbakia :");
 		this.Telefono=teklatua.next();
-		System.out.println("Email kontua:");
+		System.out.println("email kontua:");
 		this.Email=teklatua.next();
-		System.out.println("Ordainketa kontua zenbakia");
+		System.out.println("ordainketa kontua zenbakia");
 		this.Ordainketa_Metodoa=teklatua.nextInt();
 	}
 }

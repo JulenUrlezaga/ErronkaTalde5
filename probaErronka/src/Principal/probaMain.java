@@ -8,9 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import Klaseak.Bezeroa;
 import Klaseak.Bus;
 import Klaseak.Hegazkina;
 import Klaseak.Itsasontzia;
+import Klaseak.Ostatua;
 
 
 public class probaMain {
@@ -19,7 +21,8 @@ public class probaMain {
 		// TODO Auto-generated method stub
 		
 		
-				
+		ArrayList<Bezeroa> bezeroa=new ArrayList<Bezeroa>();
+		ArrayList<Ostatua> ostatu=new ArrayList<Ostatua>();
 		ArrayList<Bus>bus=new ArrayList<Bus>();
 		ArrayList<Hegazkina>hegazkina=new ArrayList<Hegazkina>();
 		ArrayList<Itsasontzia>itsasontzia=new ArrayList<Itsasontzia>(); 
@@ -49,7 +52,7 @@ public class probaMain {
 			}
 			ResultSet rs5 = st.executeQuery("SELECT * FROM BidaiAgentzia.Itsasontzi;");
 			while (rs5.next()) {
-//patata
+
 			}
 			ResultSet rs6=st.executeQuery("SELECT * FROM BidaiAgentzia.Garraioa;");
 			while (rs6.next()) {
@@ -73,7 +76,7 @@ public class probaMain {
 			conexion.close();
 		}catch(SQLException sqle) {
 			sqle.printStackTrace();
-			System.out.println("Konexioa ez da zuzenañ");
+			System.out.println("Konexioa ez da zuzena");
 		}
 		
 	}
