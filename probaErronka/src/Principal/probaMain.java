@@ -1,5 +1,6 @@
 package Principal;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -33,7 +34,7 @@ public class probaMain {
 			
 			ResultSet rs1 = st.executeQuery("SELECT * FROM BidaiAgentzia.Bus b, BidaiAgentzia.Garraioa g WHERE b.ID_Garraioa=g.ID_Garraioa;");
 			while (rs1.next()) {
-			Bus b1=new Bus(rs1.getString("g.ID_Garraioa"), rs1.getString("g.Empresa"), rs1.getString("g.Jatorria"), rs1.getString("g.Helmuga"), rs1.getString("b.geltokiak"), rs1.getInt("B_Jesarlekuak"));
+			Bus b1=new Bus();
 			}
 			ResultSet rs2 = st.executeQuery("SELECT * FROM BidaiAgentzaia.Hegazkina;");
 			while (rs2.next()) {

@@ -6,4 +6,5 @@
  *
  */
 module probaErronka {
+	requires java.sql;
 }
