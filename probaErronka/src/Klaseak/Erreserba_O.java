@@ -1,6 +1,9 @@
 package Klaseak;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Erreserba_O {
 	private String NAN;
@@ -55,5 +58,25 @@ public class Erreserba_O {
 	}
 	public void PantairalatuErrO(){
 		System.out.println("bezeroaren NAN-a : "+this.NAN+" Ostatuaraen IDa : "+this.ID_Ostatua+" Sarrera data: "+this.Sarrera_data+" Irteera data : "+this.Irteera_data+" prezioa : "+this.Prezioa);
+	}
+
+	public void IrakurriErrG(Scanner teklatua) {
+		System.out.println();
+		this.NAN = teklatua.next();
+		System.out.println();
+		this.ID_Ostatua = teklatua.nextInt();
+		System.out.println();
+		try {
+			this.Sarrera_data = new SimpleDateFormat("dd/MM/yyyy").parse(teklatua.nextLine());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		System.out.println();
+		try {
+			this.Irteera_data = new SimpleDateFormat("dd/MM/yyyy").parse(teklatua.nextLine());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
 	}
 }
