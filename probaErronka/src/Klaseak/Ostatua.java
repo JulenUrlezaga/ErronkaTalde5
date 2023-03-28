@@ -67,7 +67,7 @@ public class Ostatua {
 	}
 
 	public void PantailaratuOstuta() {
-		System.out.println("ID :" + this.ID_Ostatua + ", non dago :" + this.lekua + ", Zer da :" + this.ostatu_Mota + "Zelan deitzen da? "+ this.izena + "Izarrak: ");
+		System.out.println("ID :" + this.ID_Ostatua + ", non dago :" + this.lekua + ", Zer da :" + this.ostatu_Mota + "Zelan deitzen da: "+ this.izena + "Izarrak: ");
 	}
 	
 	public void IrakurriOstatua(Scanner teklatua) {
