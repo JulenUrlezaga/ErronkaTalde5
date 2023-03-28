@@ -72,11 +72,11 @@ public class Bezeroa {
 		this.Izena=teklatua.next();
 		System.out.println("Abizenak :");
 		this.Abizenak=teklatua.next();
-		System.out.println("Telofono zenbakia :");
+		System.out.println("Telefono zenbakia :");
 		this.Telefono=teklatua.next();
-		System.out.println("email kontua:");
+		System.out.println("Email kontua:");
 		this.Email=teklatua.next();
-		System.out.println("ordainketa kontua zenbakia");
+		System.out.println("Ordainketa kontua zenbakia");
 		this.Ordainketa_Metedoa=teklatua.nextInt();
 	}
 }
