@@ -3,26 +3,19 @@ package Klaseak;
 import java.util.Scanner;
 
 public class Hegazkina extends Garraioa{
-	private String Aireportua;
 	private int H_Jesarlekuak;
 	
 	public Hegazkina() {
 		super();
-		this.Aireportua= "";
+
 		this.H_Jesarlekuak = 0;
 	}
-	public Hegazkina(String A,int Hj,String ig,String en,String ja,String he) {
+	public Hegazkina(int Hj,String ig,String en,String ja,String he) {
 		super(ig,en,ja,he);
-		this.Aireportua=A;
+
 		this.H_Jesarlekuak=Hj;
 	}
-	
-	public String getAireportua() {
-		return Aireportua;
-	}
-	public void setAireportua(String aireportua) {
-		Aireportua = aireportua;
-	}
+
 	public int getH_Jesarlekuak() {
 		return H_Jesarlekuak;
 	}
