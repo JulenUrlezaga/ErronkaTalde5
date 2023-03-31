@@ -8,15 +8,21 @@ public class Hegazkina extends Garraioa{
 	
 	public Hegazkina() {
 		super();
-
+		this.Aireportua="";
 		this.H_Jesarlekuak = 0;
 	}
-	public Hegazkina(int Hj,String ig,String en,String ja,String he) {
+	public Hegazkina(int Hj,String ig,String en,String ja,String he,String ai) {
 		super(ig,en,ja,he);
-
-		this.H_Jesarlekuak=Hj;
+			this.Aireportua=ai;
+			this.H_Jesarlekuak=Hj;
 	}
 
+	public String getAireportua() {
+		return Aireportua;
+	}
+	public void setAireportua(String aireportua) {
+		Aireportua = aireportua;
+	}
 	public int getH_Jesarlekuak() {
 		return H_Jesarlekuak;
 	}
