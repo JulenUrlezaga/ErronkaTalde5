@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Hegazkina extends Garraioa{
 	private int H_Jesarlekuak;
+	private String Aireportua;
 	
 	public Hegazkina() {
 		super();
@@ -41,6 +42,7 @@ public class Hegazkina extends Garraioa{
 	public boolean Premium() {
 		// TODO Auto-generated method stub
 		String erantzuna="";
+		double prezioa;
 		System.out.println("Premium izan nahi duzu? BAI/EZ (+5€)");
 		if (erantzuna.equalsIgnoreCase("bai")) {
 			
