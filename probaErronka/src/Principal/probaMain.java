@@ -98,7 +98,10 @@ public class probaMain {
 		
 		int menu;
 		String gar;
+		String exit;
+		String erreser;
 		boolean irten=true;
+		boolean err=false;
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Ongi etorri gure bidai agentziaren programara");
 		do {
@@ -147,9 +150,47 @@ public class probaMain {
 					}
 				}
 				break;
+			
+			case 3:
+				System.out.println("Sartu erreserbaren ID-a");
+				erreser=sc.next();
+				for(int i=0;i<erreserbag.size();i++) {
+					if(erreser==erreserbag.get(i).getID_garraio()) {
+						System.out.println("Erreserba horren prezioa: "+erreserbag.get(i).getPrezioa());
+					}
+				}
+				break;
+				
+			case 4:
+				
+				
+				break;
 			}
 			//aukerak
-		}while(irten=false);
+			//irteera menu-a
+			System.out.println("Programatik irten nahi duzu?");
+			exit=sc.next();
+			if(exit.equalsIgnoreCase("bai")) {
+				irten=true;
+			}else if(exit.equalsIgnoreCase("ez")) {
+				irten=false;
+			}else {
+				err=true;
+			}
+			while(err) {
+				System.out.println("Aukera hori ez da onargarria, saiatu berriro");
+				exit=sc.next();
+				if(exit.equalsIgnoreCase("bai")) {
+					irten=true;
+					err=false;
+				}else if(exit.equalsIgnoreCase("ez")) {
+					irten=false;
+					err=false;
+				}
+			}
+			//irteera menu-a
+			
+		}while(!irten);
 		//menu
 		
 		//bezeroa
