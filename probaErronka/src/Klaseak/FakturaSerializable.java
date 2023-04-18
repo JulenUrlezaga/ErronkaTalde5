@@ -11,7 +11,7 @@ public class FakturaSerializable {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Faktura f = new Faktura();
+		Faktura f = new Faktura("wer",0,"wer",01-12-1002,10-11-1100,2.9);
 		try {
 			FileOutputStream fos = new FileOutputStream("Fakturak.dat");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -31,7 +31,7 @@ public class FakturaSerializable {
 		// Despu�s lee los datos del Fecha desde fechas.dat y
 
 		try {
-			FileInputStream fis = new FileInputStream("fakturak.dat");
+			FileInputStream fis = new FileInputStream("Fakturak.dat");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			// convierte los bytes le�dos en un objeto de la clase Fecha

@@ -21,18 +21,18 @@ public class Faktura implements Serializable, Fakturazioa {
 		this.NAN = "";
 		this.Ordainketa_metodoa = 0;
 		this.id = "";
-		this.Helmuga_data = new Date(0 / 0 / 0);
-		this.Irteera_data = new Date(0 / 0 / 0);
+		this.Helmuga_data = new Date(0 - 0 - 0);
+		this.Irteera_data = new Date(0 - 0 - 0);
 		this.prezioa = 0;
 	}
 
-	public Faktura(String na, int om, String idg, Date hd, Date id, int pre) {
+	public Faktura(String na, int om, String idg, Date a, Date as, double d) {
 		this.NAN = na;
 		this.Ordainketa_metodoa = om;
 		this.id = idg;
-		this.Helmuga_data = hd;
-		this.Irteera_data = id;
-		this.prezioa = pre;
+		this.Helmuga_data = a;
+		this.Irteera_data = as;
+		this.prezioa = d;
 	}
 
 	public String getNAN() {
@@ -86,13 +86,13 @@ public class Faktura implements Serializable, Fakturazioa {
 		this.id = teklatua.next();
 		System.out.println();
 		try {
-			this.Irteera_data = new SimpleDateFormat("dd/MM/yyyy").parse(teklatua.nextLine());
+			this.Irteera_data = new SimpleDateFormat("dd-MM-yyyy").parse(teklatua.next());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		System.out.println();
 		try {
-			this.Helmuga_data = new SimpleDateFormat("dd/MM/yyyy").parse(teklatua.nextLine());
+			this.Helmuga_data = new SimpleDateFormat("dd-MM-yyyy").parse(teklatua.next());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
