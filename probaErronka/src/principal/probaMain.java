@@ -1,12 +1,18 @@
 package principal;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -14,6 +20,7 @@ import Klaseak.Bezeroa;
 import Klaseak.Bus;
 import Klaseak.Erreserba_G;
 import Klaseak.Erreserba_O;
+import Klaseak.Faktura;
 import Klaseak.Garraioa;
 import Klaseak.Hegazkina;
 import Klaseak.Itsasontzia;
@@ -32,7 +39,8 @@ public class probaMain {
 		ArrayList<Bus> bus = new ArrayList<Bus>();
 		ArrayList<Hegazkina> hegazkina = new ArrayList<Hegazkina>();
 		ArrayList<Itsasontzia> itsasontzia = new ArrayList<Itsasontzia>();
-
+		ArrayList<Faktura> fakturak = new ArrayList<Faktura>();
+		Faktura faktura=new Faktura(); 
 		// Datu basetik datuak kopiatu
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/BidaiAgentzia", "root", "");
@@ -103,7 +111,29 @@ public class probaMain {
 			System.out.println("Konexioa ez da zuzena");
 		}
 		// Datu basetik datuak kopiatu
-
+		//
+		try {
+			FileInputStream fis=new FileInputStream("Faktura.dat");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			
+			while(fis.available() > 0) {
+				fakturak = (Faktura)ois.readObject(); 
+				fakturak.add(faktura); 	
+			}
+			
+			ois.close();
+			fis.close();
+			
+		} catch (FileNotFoundException fnfe) {
+			System.out.println("Error archivo no encontrado.");
+		} catch (IOException ioe) {
+			System.out.println("Error de Entrada / Salida");
+		} catch (InputMismatchException cnfe) {
+			System.out.println("Error. Zenbaki bat sartu behar duzu");
+		}catch (ClassNotFoundException cnfe) {
+			System.out.println("Error Clase No Encontrada");
+		}
+		//
 		// menua
 
 		int menu;
