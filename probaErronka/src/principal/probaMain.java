@@ -117,7 +117,7 @@ public class probaMain {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			
 			while(fis.available() > 0) {
-				fakturak = (Faktura)ois.readObject(); 
+				fakturak = (ArrayList<Faktura>)ois.readObject(); 
 				fakturak.add(faktura); 	
 			}
 			
