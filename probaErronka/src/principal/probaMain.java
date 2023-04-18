@@ -72,7 +72,7 @@ public class probaMain {
 			}
 			ResultSet rs5 = st.executeQuery("SELECT * FROM BidaiAgentzia.Erreserba_O;");
 			while (rs5.next()) {
-				Erreserba_O eo1 = new Erreserba_O(rs5.getNString("NAN"), rs5.getInt("ID_ostatua"),
+				Erreserba_O eo1 = new Erreserba_O(rs5.getString("NAN"), rs5.getString("ID_ostatua"),
 						rs5.getDate("Sarrera_data"), rs5.getDate("Irteera_data"), rs5.getInt("Prezioa"));
 				erreserbao.add(eo1);
 			}
@@ -396,7 +396,7 @@ public class probaMain {
 			String ID_garraio;
 			Date irteera_data;
 			Date helmuga_data;
-			int prezioa;
+			double prezioa;
 
 			for (int pos = 0; pos < itsasontzia.size(); pos++) {
 				NAN = erreserbag.get(pos).getID_garraio();
@@ -425,10 +425,10 @@ public class probaMain {
 			col = "DELETE FROM erreserba_o;";
 			st.executeUpdate(col);
 			String NAN;
-			int ID_ostatu;
+			String ID_ostatu;
 			Date sarrera_data;
 			Date irteera_data;
-			int prezioa;
+			double prezioa;
 
 			for (int pos = 0; pos < itsasontzia.size(); pos++) {
 				NAN = erreserbao.get(pos).getNAN();

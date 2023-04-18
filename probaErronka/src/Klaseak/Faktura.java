@@ -6,7 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Faktura implements Serializable {
+import Bodega.fakturazioa;
+
+public class Faktura implements Serializable, Fakturazioa {
 
 	private String NAN;
 	private int Ordainketa_metodoa;
@@ -99,4 +101,13 @@ public class Faktura implements Serializable {
 		System.out.println("Zure txartel zenbakia");
 		this.Ordainketa_metodoa = teklatua.nextInt();
 	}
+
+	@Override
+	public double kalkulatuTotala() {
+		// TODO Auto-generated method stub
+		double total = 0;
+		total = this.prezioa + (this.prezioa * BEZ);
+		return total;
+	}
+
 }
