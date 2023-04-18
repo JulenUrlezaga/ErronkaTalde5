@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-import Bodega.fakturazioa;
 
 public class Faktura implements Serializable, Fakturazioa {
 
@@ -21,8 +20,8 @@ public class Faktura implements Serializable, Fakturazioa {
 		this.NAN = "";
 		this.Ordainketa_metodoa = 0;
 		this.id = "";
-		this.Helmuga_data = new Date(0 - 0 - 0);
-		this.Irteera_data = new Date(0 - 0 - 0);
+		this.Irteera_data = new Date(0-0-0);
+		this.Helmuga_data = new Date(0-0-0);
 		this.prezioa = 0;
 	}
 
