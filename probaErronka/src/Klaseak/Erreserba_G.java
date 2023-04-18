@@ -10,7 +10,7 @@ public class Erreserba_G {
 	private String ID_garraio;
 	private Date Irteera_data;
 	private Date Helmuga_data;
-	private int prezioa;
+	private double prezioa;
 
 	public Erreserba_G() {
 		this.NAN = "";
@@ -60,11 +60,11 @@ public class Erreserba_G {
 		Helmuga_data = helmuga_data;
 	}
 
-	public int getPrezioa() {
+	public double getPrezioa() {
 		return prezioa;
 	}
 
-	public void setPrezioa(int prezioa) {
+	public void setPrezioa(double prezioa) {
 		this.prezioa = prezioa;
 	}
 
@@ -90,6 +90,7 @@ public class Erreserba_G {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-
+		System.out.println("prezioa");
+		this.prezioa = teklatua.nextDouble();
 	}
 }

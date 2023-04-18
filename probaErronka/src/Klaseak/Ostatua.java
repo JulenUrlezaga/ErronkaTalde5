@@ -13,17 +13,17 @@ public class Ostatua {
 		this.ID_Ostatua = 0;
 		this.lekua = "";
 		this.ostatu_Mota = "";
-		this.izena="";
-		this.izarrak=0;
+		this.izena = "";
+		this.izarrak = 0;
 	}
 
-	public Ostatua(int id, String le, String oM,String iz,double izr) {
+	public Ostatua(int id, String le, String oM, String iz, double izr) {
 		this.ID_Ostatua = id;
 		this.lekua = le;
 		this.ostatu_Mota = oM;
 		this.izena = iz;
 		this.izarrak = izr;
-		
+
 	}
 
 	public String getIzena() {
@@ -67,19 +67,20 @@ public class Ostatua {
 	}
 
 	public void PantailaratuOstuta() {
-		System.out.println("ID :" + this.ID_Ostatua + ", non dago :" + this.lekua + ", Zer da :" + this.ostatu_Mota + "Zelan deitzen da: "+ this.izena + "Izarrak: ");
+		System.out.println("ID :" + this.ID_Ostatua + ", non dago :" + this.lekua + ", Zer da :" + this.ostatu_Mota
+				+ "Zelan deitzen da: " + this.izena + "Izarrak: ");
 	}
-	
+
 	public void IrakurriOstatua(Scanner teklatua) {
 		System.out.println("ID: ");
-		this.ID_Ostatua=teklatua.nextInt();
+		this.ID_Ostatua = teklatua.nextInt();
 		System.out.println("Non dago:");
-		this.lekua=teklatua.next();
+		this.lekua = teklatua.next();
 		System.out.println("Zer eraikin mota da:");
-		this.ostatu_Mota=teklatua.next();
+		this.ostatu_Mota = teklatua.next();
 		System.out.println("Izena: ");
-		this.izena=teklatua.next();
+		this.izena = teklatua.next();
 		System.out.println("Zenbat izar: ");
-		this.izarrak=teklatua.nextInt();
+		this.izarrak = teklatua.nextInt();
 	}
 }
