@@ -202,7 +202,9 @@ public class probaMain {
 				break;
 
 			case 4:
-
+				for (int i = 0; i < ostatu.size(); i++) {
+					ostatu.get(i).PantailaratuOstuta();
+				}
 				break;
 			}
 			// aukerak
