@@ -6,12 +6,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.Date;
 
 public class FakturaSerializable {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Faktura f = new Faktura("wer",0,"wer",01-12-1002,10-11-1100,2.9);
+		
+		Faktura f = new Faktura("wer",0,"wer",new Date(01-3-2012),new Date(29-4-2002),2.9);
 		try {
 			FileOutputStream fos = new FileOutputStream("Fakturak.dat");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
