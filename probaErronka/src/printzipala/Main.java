@@ -54,7 +54,7 @@ public class Main {
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/BidaiAgentzia", "root", "");
 
-			System.out.println("Konexio zuzena");
+			System.out.println("Konekxio zuzena");
 
 			Statement st = conexion.createStatement();
 
