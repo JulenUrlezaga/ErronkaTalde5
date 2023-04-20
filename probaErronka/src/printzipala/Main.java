@@ -2,8 +2,10 @@ package printzipala;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -26,19 +28,18 @@ import Klaseak.Ostatua;
 
 public class Main {
 
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		boolean bbezero=false;
-		boolean bostatu=false;
-		boolean berreserbag=false;
-		boolean berreserbao=false;
-		boolean bgarraio=false;
-		boolean bbus=false;
-		boolean bhegazkin=false;
-		boolean bitsasontzi=false;
-		
+
+		boolean bbezero = false;
+		boolean bostatu = false;
+		boolean berreserbag = false;
+		boolean berreserbao = false;
+		boolean bgarraio = false;
+		boolean bbus = false;
+		boolean bhegazkin = false;
+		boolean bitsasontzi = false;
+
 		ArrayList<Bezeroa> bezeroa = new ArrayList<Bezeroa>();
 		ArrayList<Ostatua> ostatu = new ArrayList<Ostatua>();
 		ArrayList<Erreserba_G> erreserbag = new ArrayList<Erreserba_G>();
@@ -48,7 +49,7 @@ public class Main {
 		ArrayList<Hegazkina> hegazkina = new ArrayList<Hegazkina>();
 		ArrayList<Itsasontzia> itsasontzia = new ArrayList<Itsasontzia>();
 		ArrayList<Faktura> fakturak = new ArrayList<Faktura>();
-		Faktura faktura=new Faktura(); 
+		Faktura faktura = new Faktura();
 		// Datu basetik datuak kopiatu
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/BidaiAgentzia", "root", "");
@@ -121,24 +122,24 @@ public class Main {
 		// Datu basetik datuak kopiatu
 		//
 		try {
-			FileInputStream fis=new FileInputStream("Faktura.dat");
+			FileInputStream fis = new FileInputStream("Faktura.dat");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			
-			while(fis.available() > 0) {
-				fakturak = (ArrayList<Faktura>)ois.readObject(); 
-				fakturak.add(faktura); 	
+
+			while (fis.available() > 0) {
+				fakturak = (ArrayList<Faktura>) ois.readObject();
+				fakturak.add(faktura);
 			}
-			
+
 			ois.close();
 			fis.close();
-			
+
 		} catch (FileNotFoundException fnfe) {
 			System.out.println("Error archivo no encontrado.");
 		} catch (IOException ioe) {
 			System.out.println("Error de Entrada / Salida");
 		} catch (InputMismatchException cnfe) {
 			System.out.println("Error. Zenbaki bat sartu behar duzu");
-		}catch (ClassNotFoundException cnfe) {
+		} catch (ClassNotFoundException cnfe) {
 			System.out.println("Error Clase No Encontrada");
 		}
 		//
@@ -213,7 +214,31 @@ public class Main {
 					ostatu.get(i).PantailaratuOstuta();
 				}
 				break;
+				
+			case 5: 
+				
+					System.out.println("Zein garraioren berri bat nahi dituzu?");
+					gar = sc.next();
+					if (gar.equalsIgnoreCase("busa")) {
+						Bus bus1= new Bus();
+						bus1.IrakurriB(sc);
+						bus.add(bus1);
+						bbus=true;
+						bhegazkin=true;
+						bitsasontzi=true;
+						bgarraio=true;
+						berreserbag=true;
+					} else if (gar.equalsIgnoreCase("hegazkina")) {
+						for (int i = 0; i < hegazkina.size(); i++) {
+							System.out.println(hegazkina.get(i));
+						}
+					} else if (gar.equalsIgnoreCase("itsasontzia")) {
+						for (int i = 0; i < itsasontzia.size(); i++) {
+							System.out.println(itsasontzia.get(i));
+						}
+					}
 			}
+			
 			// aukerak
 			// irteera menu-a
 			System.out.println("Programatik irten nahi duzu?");
@@ -242,349 +267,349 @@ public class Main {
 		// menu
 
 		// Datuak eguneratu
-		if(bbus) {
+		if (bbus) {
 			try {
-				String col="";
-				Connection conexion=DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-				Statement st=conexion.createStatement();
-				col="DELETE FROM bus;";
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				col = "DELETE FROM bus;";
 				st.executeUpdate(col);
-			}catch(SQLException e) {
-				e.printStackTrace();
-				System.out.println("Error de conexion");
-			}
-		}if(bhegazkin) {
-			try {
-				String col="";
-				Connection conexion=DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-				Statement st=conexion.createStatement();
-				col="DELETE FROM hegazkina;";
-				st.executeUpdate(col);
-			}catch(SQLException e) {
-				e.printStackTrace();
-				System.out.println("Error de conexion");
-			}
-			
-		}if(bitsasontzi) {
-			try {
-				String col="";
-				Connection conexion=DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-				Statement st=conexion.createStatement();
-				col="DELETE FROM itsasontzia;";
-				st.executeUpdate(col);
-			}catch(SQLException e) {
-				e.printStackTrace();
-				System.out.println("Error de conexion");
-			}
-		}if(bgarraio) {
-			try {
-				String col="";
-				Connection conexion=DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-				Statement st=conexion.createStatement();
-				col="DELETE FROM garraioa;";
-				st.executeUpdate(col);
-			}catch(SQLException e) {
-				e.printStackTrace();
-				System.out.println("Error de conexion");
-			}
-			
-		}if(berreserbag) {
-			try {
-				String col="";
-				Connection conexion=DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-				Statement st=conexion.createStatement();
-				col="DELETE FROM erreserba_g;";
-				st.executeUpdate(col);
-			}catch(SQLException e) {
-				e.printStackTrace();
-				System.out.println("Error de conexion");
-			}
-		}if(bostatu) {
-			try {
-				String col="";
-				Connection conexion=DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-				Statement st=conexion.createStatement();
-				col="DELETE FROM ostatua;";
-				st.executeUpdate(col);
-			}catch(SQLException e) {
-				e.printStackTrace();
-				System.out.println("Error de conexion");
-			}
-		}if(berreserbao) {
-			try {
-				String col="";
-				Connection conexion=DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-				Statement st=conexion.createStatement();
-				col="DELETE FROM erreserba_o;";
-				st.executeUpdate(col);
-			}catch(SQLException e) {
-				e.printStackTrace();
-				System.out.println("Error de conexion");
-			}
-		}if(bbezero) {
-			try {
-				String col="";
-				Connection conexion=DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-				Statement st=conexion.createStatement();
-				col="DELETE FROM bezeroa;";
-				st.executeUpdate(col);
-			}catch(SQLException e) {
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
 				e.printStackTrace();
 				System.out.println("Error de conexion");
 			}
 		}
-		
-		/*
-		// Datuak eguneratu
-		// bezeroa
-		try {
-			String col = "";
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-
-			Statement st = conexion.createStatement();
-			col = "DELETE FROM bezeroa;";
-			st.executeUpdate(col);
-			String NAN;
-			String izena;
-			String abizenak;
-			String telefono;
-			String email;
-			int ordainketa_metodoa;
-
-			for (int pos = 0; pos < bezeroa.size(); pos++) {
-				NAN = bezeroa.get(pos).getNAN();
-				izena = bezeroa.get(pos).getIzena();
-				abizenak = bezeroa.get(pos).getAbizenak();
-				telefono = bezeroa.get(pos).getNAN();
-				email = bezeroa.get(pos).getEmail();
-				ordainketa_metodoa = bezeroa.get(pos).getOrdainketa_Metodoa();
-				col = "insert into bezeroa values ('" + NAN + "','" + izena + "','" + abizenak + "','" + telefono
-						+ "','" + email + "'," + ordainketa_metodoa + ");";
+		if (bhegazkin) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				col = "DELETE FROM hegazkina;";
 				st.executeUpdate(col);
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
 			}
-			st.close();
 
-			conexion.close();
-		} catch (SQLException e) {
-			// si NO se ha conectado correctamente
-			e.printStackTrace();
-			System.out.println("Error de Conexión");
 		}
-		// bezeroa
-		// ostatua
-		try {
-			String col = "";
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-
-			Statement st = conexion.createStatement();
-			col = "DELETE FROM ostatua;";
-			st.executeUpdate(col);
-			int ID_ostatua;
-			String lekua;
-			String ostatu_mota;
-			String izena;
-			double izarrak;
-
-			for (int pos = 0; pos < ostatu.size(); pos++) {
-				ID_ostatua = ostatu.get(pos).getID_Ostatua();
-				lekua = ostatu.get(pos).getLekua();
-				ostatu_mota = ostatu.get(pos).getOstatu_Mota();
-				izena = ostatu.get(pos).getIzena();
-				izarrak = ostatu.get(pos).getIzarrak();
-				col = "insert into ostatua values (" + ID_ostatua + ",'" + lekua + "','" + ostatu_mota + "','" + izena
-						+ "'," + izarrak + ");";
+		if (bitsasontzi) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				col = "DELETE FROM itsasontzia;";
 				st.executeUpdate(col);
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
 			}
-			st.close();
-
-			conexion.close();
-		} catch (SQLException e) {
-			// si NO se ha conectado correctamente
-			e.printStackTrace();
-			System.out.println("Error de Conexión");
 		}
-		// ostatua
-		// garraioa
-		try {
-			String col = "";
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-
-			Statement st = conexion.createStatement();
-			col = "DELETE FROM garraioa;";
-			st.executeUpdate(col);
-			String ID_garraio;
-			String empresa;
-			String jatorria;
-			String Helmuga;
-
-			for (int pos = 0; pos < garraioa.size(); pos++) {
-				ID_garraio = garraioa.get(pos).getId_garraioa();
-				empresa = garraioa.get(pos).getEnpresa();
-				jatorria = garraioa.get(pos).getJatorria();
-				Helmuga = garraioa.get(pos).getHelmuga();
-				col = "insert into bezeroa values ('" + ID_garraio + "','" + empresa + "','" + jatorria + "','"
-						+ Helmuga + "');";
+		if (berreserbao) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				col = "DELETE FROM erreserba_o;";
 				st.executeUpdate(col);
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
 			}
-			st.close();
-
-			conexion.close();
-		} catch (SQLException e) {
-			// si NO se ha conectado correctamente
-			e.printStackTrace();
-			System.out.println("Error de Conexión");
 		}
-		// garraioa
-		// bus
-		try {
-			String col = "";
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-
-			Statement st = conexion.createStatement();
-			col = "DELETE FROM bus;";
-			st.executeUpdate(col);
-			String ID_garraio;
-			String Geltokiak;
-			int B_Jesarlekuak;
-
-			for (int pos = 0; pos < bus.size(); pos++) {
-				ID_garraio = bus.get(pos).getId_garraioa();
-				Geltokiak = bus.get(pos).getEnpresa();
-				B_Jesarlekuak = bus.get(pos).getB_Jesarlekuak();
-				col = "insert into bezeroa values ('" + ID_garraio + "','" + Geltokiak + "'," + B_Jesarlekuak + ");";
+		if (berreserbag) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				col = "DELETE FROM erreserba_g;";
 				st.executeUpdate(col);
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
 			}
-			st.close();
-
-			conexion.close();
-		} catch (SQLException e) {
-			// si NO se ha conectado correctamente
-			e.printStackTrace();
-			System.out.println("Error de Conexión");
 		}
-		// bus
-		// hegazkin
-		try {
-			String col = "";
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-
-			Statement st = conexion.createStatement();
-			col = "DELETE FROM hegazkina;";
-			st.executeUpdate(col);
-			String ID_garraio;
-			String Aireportua;
-			int H_Jesarlekuak;
-
-			for (int pos = 0; pos < hegazkina.size(); pos++) {
-				ID_garraio = hegazkina.get(pos).getId_garraioa();
-				Aireportua = hegazkina.get(pos).getEnpresa();
-				H_Jesarlekuak = hegazkina.get(pos).getH_Jesarlekuak();
-				col = "insert into bezeroa values ('" + ID_garraio + "','" + Aireportua + "'," + H_Jesarlekuak + ");";
+		if (bgarraio) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				col = "DELETE FROM garraioa;";
 				st.executeUpdate(col);
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
 			}
-			st.close();
 
-			conexion.close();
-		} catch (SQLException e) {
-			// si NO se ha conectado correctamente
-			e.printStackTrace();
-			System.out.println("Error de Conexión");
 		}
-		// hegazkin
-		// itsasontzi
-		try {
-			String col = "";
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-
-			Statement st = conexion.createStatement();
-			col = "DELETE FROM itsasontzia;";
-			st.executeUpdate(col);
-			String ID_garraio;
-			String Portua;
-			int Kamaroteak;
-
-			for (int pos = 0; pos < itsasontzia.size(); pos++) {
-				ID_garraio = itsasontzia.get(pos).getId_garraioa();
-				Portua = itsasontzia.get(pos).getPortuak();
-				Kamaroteak = itsasontzia.get(pos).getKamaroteak();
-				col = "insert into bezeroa values ('" + ID_garraio + "', '" + Portua + "', " + Kamaroteak + ");";
+		if (bostatu) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				col = "DELETE FROM ostatua;";
 				st.executeUpdate(col);
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
 			}
-			st.close();
-
-			conexion.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Error de Conexión");
 		}
-		// itsasintzi
-		// Erreserba_G
-		try {
-			String col = "";
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
-
-			Statement st = conexion.createStatement();
-			col = "DELETE FROM erreserba_g;";
-			st.executeUpdate(col);
-			String NAN;
-			String ID_garraio;
-			Date irteera_data;
-			Date helmuga_data;
-			double prezioa;
-
-			for (int pos = 0; pos < itsasontzia.size(); pos++) {
-				NAN = erreserbag.get(pos).getID_garraio();
-				ID_garraio = erreserbag.get(pos).getID_garraio();
-				irteera_data = erreserbag.get(pos).getIrteera_data();
-				helmuga_data = erreserbag.get(pos).getHelmuga_data();
-				prezioa = erreserbag.get(pos).getPrezioa();
-				col = "insert into bezeroa values ('" + NAN + "', '" + ID_garraio + "', '" + irteera_data + "', '"
-						+ helmuga_data + "', '" + prezioa + "');";
+		if (bbezero) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				col = "DELETE FROM bezeroa;";
 				st.executeUpdate(col);
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
 			}
-			st.close();
-
-			conexion.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Error de Conexión");
 		}
-		// Erreserba_G
-		// Erreserba_O
-		try {
-			String col = "";
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+		if (bbezero) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				String NAN;
+				String izena;
+				String abizenak;
+				String telefono;
+				String email;
+				int ordainketa_metodoa;
 
-			Statement st = conexion.createStatement();
-			col = "DELETE FROM erreserba_o;";
-			st.executeUpdate(col);
-			String NAN;
-			String ID_ostatu;
-			Date sarrera_data;
-			Date irteera_data;
-			double prezioa;
+				for (int pos = 0; pos < bezeroa.size(); pos++) {
+					NAN = bezeroa.get(pos).getNAN();
+					izena = bezeroa.get(pos).getIzena();
+					abizenak = bezeroa.get(pos).getAbizenak();
+					telefono = bezeroa.get(pos).getNAN();
+					email = bezeroa.get(pos).getEmail();
+					ordainketa_metodoa = bezeroa.get(pos).getOrdainketa_Metodoa();
+					col = "insert into bezeroa values ('" + NAN + "','" + izena + "','" + abizenak + "','" + telefono
+							+ "','" + email + "'," + ordainketa_metodoa + ");";
+					st.executeUpdate(col);
+				}
+				st.close();
 
-			for (int pos = 0; pos < itsasontzia.size(); pos++) {
-				NAN = erreserbao.get(pos).getNAN();
-				ID_ostatu = erreserbao.get(pos).getID_Ostatua();
-				sarrera_data = erreserbao.get(pos).getSarrera_data();
-				irteera_data = erreserbao.get(pos).getIrteera_data();
-				prezioa = erreserbao.get(pos).getPrezioa();
-				col = "insert into bezeroa values ('" + NAN + "', " + ID_ostatu + ", '" + sarrera_data + "', '"
-						+ irteera_data + "', " + prezioa + ");";
-				st.execute(col);
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
 			}
-			st.close();
-
-			conexion.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Error de Conexión");
 		}
-		// Erreserba_O
-		 * 
-		 */
+		if (bostatu) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				int ID_ostatua;
+				String lekua;
+				String ostatu_mota;
+				String izena;
+				double izarrak;
+
+				for (int pos = 0; pos < ostatu.size(); pos++) {
+					ID_ostatua = ostatu.get(pos).getID_Ostatua();
+					lekua = ostatu.get(pos).getLekua();
+					ostatu_mota = ostatu.get(pos).getOstatu_Mota();
+					izena = ostatu.get(pos).getIzena();
+					izarrak = ostatu.get(pos).getIzarrak();
+					col = "insert into ostatua values (" + ID_ostatua + ",'" + lekua + "','" + ostatu_mota + "','"
+							+ izena + "'," + izarrak + ");";
+					st.executeUpdate(col);
+				}
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
+			}
+		}
+		if (bgarraio) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				String ID_garraio;
+				String empresa;
+				String jatorria;
+				String Helmuga;
+
+				for (int pos = 0; pos < garraioa.size(); pos++) {
+					ID_garraio = garraioa.get(pos).getId_garraioa();
+					empresa = garraioa.get(pos).getEnpresa();
+					jatorria = garraioa.get(pos).getJatorria();
+					Helmuga = garraioa.get(pos).getHelmuga();
+					col = "insert into garraioa values ('" + ID_garraio + "','" + empresa + "','" + jatorria + "','"
+							+ Helmuga + "');";
+					st.executeUpdate(col);
+				}
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
+			}
+
+		}
+		if (berreserbag) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				String NAN;
+				String ID_garraio;
+				Date irteera_data;
+				Date helmuga_data;
+				double prezioa;
+
+				for (int pos = 0; pos < erreserbag.size(); pos++) {
+					NAN = erreserbag.get(pos).getID_garraio();
+					ID_garraio = erreserbag.get(pos).getID_garraio();
+					irteera_data = erreserbag.get(pos).getIrteera_data();
+					helmuga_data = erreserbag.get(pos).getHelmuga_data();
+					prezioa = erreserbag.get(pos).getPrezioa();
+					col = "insert into erreserba_g values ('"+NAN+"','"+ ID_garraio +"','"+irteera_data+"','"+helmuga_data+"','"+ prezioa+"');";
+					st.executeUpdate(col);
+				}
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
+			}
+		}
+		if (berreserbao) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				String NAN;
+				String ID_ostatu;
+				Date sarrera_data;
+				Date irteera_data;
+				double prezioa;
+
+				for (int pos = 0; pos < erreserbao.size(); pos++) {
+					NAN = erreserbao.get(pos).getNAN();
+					ID_ostatu = erreserbao.get(pos).getID_Ostatua();
+					sarrera_data = erreserbao.get(pos).getSarrera_data();
+					irteera_data = erreserbao.get(pos).getIrteera_data();
+					prezioa = erreserbao.get(pos).getPrezioa();
+					col = "insert into erreserba_o values ('" + NAN + "', " + ID_ostatu + ", '" + sarrera_data + "', '"
+							+ irteera_data + "', " + prezioa + ");";
+					st.execute(col);
+				}
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
+			}
+		}
+		if (bitsasontzi) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				String ID_garraio;
+				String Portua;
+				int Kamaroteak;
+
+				for (int pos = 0; pos < itsasontzia.size(); pos++) {
+					ID_garraio = itsasontzia.get(pos).getId_garraioa();
+					Portua = itsasontzia.get(pos).getPortuak();
+					Kamaroteak = itsasontzia.get(pos).getKamaroteak();
+					col = "insert into itsasontzia values ('" + ID_garraio + "', '" + Portua + "', " + Kamaroteak + ");";
+					st.executeUpdate(col);
+				}
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
+			}
+		}
+		if (bhegazkin) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				String ID_garraio;
+				String Aireportua;
+				int H_Jesarlekuak;
+
+				for (int pos = 0; pos < hegazkina.size(); pos++) {
+					ID_garraio = hegazkina.get(pos).getId_garraioa();
+					Aireportua = hegazkina.get(pos).getEnpresa();
+					H_Jesarlekuak = hegazkina.get(pos).getH_Jesarlekuak();
+					col = "insert into hegazkina values ('" + ID_garraio + "','" + Aireportua + "'," + H_Jesarlekuak
+							+ ");";
+					st.executeUpdate(col);
+				}
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
+			}
+
+		}
+		if (bbus) {
+			try {
+				String col = "";
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
+				Statement st = conexion.createStatement();
+				String ID_garraio;
+				String Geltokiak;
+				int B_Jesarlekuak;
+
+				for (int pos = 0; pos < bus.size(); pos++) {
+					ID_garraio = bus.get(pos).getId_garraioa();
+					Geltokiak = bus.get(pos).getEnpresa();
+					B_Jesarlekuak = bus.get(pos).getB_Jesarlekuak();
+					col = "insert into bus values ('" + ID_garraio + "','" + Geltokiak + "'," + B_Jesarlekuak
+							+ ");";
+					st.executeUpdate(col);
+				}
+				st.close();
+
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Error de conexion");
+			}
+		}
+
 	}
-
 
 }
