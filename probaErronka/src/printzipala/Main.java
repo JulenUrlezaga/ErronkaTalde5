@@ -44,7 +44,7 @@ public class Main {
 		ArrayList<Ostatua> ostatu = new ArrayList<Ostatua>();
 		ArrayList<Erreserba_G> erreserbag = new ArrayList<Erreserba_G>();
 		ArrayList<Erreserba_O> erreserbao = new ArrayList<Erreserba_O>();
-		ArrayList<Garraioa> garraioa = new ArrayList<Garraioa>();
+		
 		ArrayList<Bus> bus = new ArrayList<Bus>();
 		ArrayList<Hegazkina> hegazkina = new ArrayList<Hegazkina>();
 		ArrayList<Itsasontzia> itsasontzia = new ArrayList<Itsasontzia>();
@@ -54,7 +54,7 @@ public class Main {
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/BidaiAgentzia", "root", "");
 
-			System.out.println("Konekxio zuzena");
+			System.out.println("Konexio zuzena");
 
 			Statement st = conexion.createStatement();
 
@@ -364,7 +364,7 @@ public class Main {
 				String col = "";
 				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 				Statement st = conexion.createStatement();
-				col = "DELETE FROM ostatua;";
+				col = "DELETE CAscade FROM ostatua;";
 				st.executeUpdate(col);
 				st.close();
 
@@ -459,11 +459,29 @@ public class Main {
 				String jatorria;
 				String Helmuga;
 
-				for (int pos = 0; pos < garraioa.size(); pos++) {
-					ID_garraio = garraioa.get(pos).getId_garraioa();
-					empresa = garraioa.get(pos).getEnpresa();
-					jatorria = garraioa.get(pos).getJatorria();
-					Helmuga = garraioa.get(pos).getHelmuga();
+				for (int pos = 0; pos < bus.size(); pos++) {
+					ID_garraio = bus.get(pos).getId_garraioa();
+					empresa = bus.get(pos).getEnpresa();
+					jatorria = bus.get(pos).getJatorria();
+					Helmuga = bus.get(pos).getHelmuga();
+					col = "insert into garraioa values ('" + ID_garraio + "','" + empresa + "','" + jatorria + "','"
+							+ Helmuga + "');";
+					st.executeUpdate(col);
+				}
+				for (int pos = 0; pos < hegazkina.size(); pos++) {
+					ID_garraio = hegazkina.get(pos).getId_garraioa();
+					empresa = hegazkina.get(pos).getEnpresa();
+					jatorria =hegazkina.get(pos).getJatorria();
+					Helmuga = hegazkina.get(pos).getHelmuga();
+					col = "insert into garraioa values ('" + ID_garraio + "','" + empresa + "','" + jatorria + "','"
+							+ Helmuga + "');";
+					st.executeUpdate(col);
+				}
+				for (int pos = 0; pos < itsasontzia.size(); pos++) {
+					ID_garraio = itsasontzia.get(pos).getId_garraioa();
+					empresa = itsasontzia.get(pos).getEnpresa();
+					jatorria =itsasontzia.get(pos).getJatorria();
+					Helmuga = itsasontzia.get(pos).getHelmuga();
 					col = "insert into garraioa values ('" + ID_garraio + "','" + empresa + "','" + jatorria + "','"
 							+ Helmuga + "');";
 					st.executeUpdate(col);
@@ -597,8 +615,7 @@ public class Main {
 					ID_garraio = bus.get(pos).getId_garraioa();
 					Geltokiak = bus.get(pos).getEnpresa();
 					B_Jesarlekuak = bus.get(pos).getB_Jesarlekuak();
-					col = "insert into bus values ('" + ID_garraio + "','" + Geltokiak + "'," + B_Jesarlekuak
-							+ ");";
+					col = "insert into bus values ('" + ID_garraio + "','" + Geltokiak + "'," + B_Jesarlekuak+ ");";
 					st.executeUpdate(col);
 				}
 				st.close();
