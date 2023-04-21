@@ -514,7 +514,7 @@ public class Main {
 					irteera_data = erreserbag.get(pos).getIrteera_data();
 					helmuga_data = erreserbag.get(pos).getHelmuga_data();
 					prezioa = erreserbag.get(pos).getPrezioa();
-					col = "insert into erreserba_g values ('"+NAN+"','"+ ID_garraio +"','"+irteera_data+"','"+helmuga_data+"','"+ prezioa+"');";
+					col = "insert into erreserba_g values ('"+NAN+"','"+ ID_garraio+"','"+irteera_data+"','"+helmuga_data+"','"+ prezioa+"');";
 					st.executeUpdate(col);
 				}
 				st.close();
