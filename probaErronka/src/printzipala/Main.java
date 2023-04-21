@@ -228,6 +228,8 @@ public class Main {
 						bitsasontzi=true;
 						bgarraio=true;
 						berreserbag=true;
+												
+						
 					} else if (gar.equalsIgnoreCase("hegazkina")) {
 						for (int i = 0; i < hegazkina.size(); i++) {
 							System.out.println(hegazkina.get(i));
@@ -364,7 +366,7 @@ public class Main {
 				String col = "";
 				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 				Statement st = conexion.createStatement();
-				col = "DELETE CAscade FROM ostatua;";
+				col = "DELETE FROM ostatua;";
 				st.executeUpdate(col);
 				st.close();
 
