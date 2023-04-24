@@ -21,10 +21,12 @@ import Klaseak.Bus;
 import Klaseak.Erreserba_G;
 import Klaseak.Erreserba_O;
 import Klaseak.Faktura;
-import Klaseak.Garraioa;
+
 import Klaseak.Hegazkina;
 import Klaseak.Itsasontzia;
 import Klaseak.Ostatua;
+
+
 
 public class Main {
 
@@ -112,11 +114,11 @@ public class Main {
 		// Datu basetik datuak kopiatu
 
 		try {
-			FileInputStream fis = new FileInputStream("Faktura.dat");
+			FileInputStream fis = new FileInputStream("Eskaintzak.dat");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			while (fis.available() > 0) {
-				fakturak = (ArrayList<Faktura>) ois.readObject();
+				faktura = (Faktura) ois.readObject();
 				fakturak.add(faktura);
 			}
 
@@ -150,6 +152,7 @@ public class Main {
 			System.out.println("5- garraio berriak sartu");
 			System.out.println("6- Ostatu berria sartu");
 			System.out.println("7- Erreserba bat egin");
+			System.out.println("8- Bezeroak ikusi");
 			System.out.println("***********************************");
 			menu = sc.nextInt();
 			// aukerak
@@ -249,25 +252,21 @@ public class Main {
 						zuzen = true;
 						System.out.println("Sartu zuren NAN zenbakia:");
 						String bnan;
-						boolean rep=false;
+						boolean rep=true;
 						int c=0;
 						String erantzuna;
-						do {
-							bnan=sc.next();
-							for(int i=0; i<bezeroa.size();i++) {
-								if (bnan.equals(bezeroa.get(i).getNAN())) {
-									rep = false;
-									c=i;
-								} else {
-									System.out.println("Zure nan zenbakia ez da aurkitu, saiatu berriro");
-									rep = true;
-								}
+						bnan=sc.next();
+						while(c<bezeroa.size()&&rep) {
+							if (bnan.equals(bezeroa.get(c).getNAN())) {
+								rep = false;
+								c=c++;
+							} else {
+								System.out.println("Zure nan zenbakia ez da aurkitu, saiatu berriro");
+								bnan = sc.next();
+								rep = true;
+								
 							}
-						}while(rep);
-						
-						System.out.println("Zer erreserbatu nahi duzu?(Ostatua edo garraioa");
-						erantzuna=sc.next();
-						
+						}					
 						
 					} else if (bezn.equalsIgnoreCase("ez")) {
 						zuzen = true;
@@ -293,7 +292,25 @@ public class Main {
 					}
 					
 				} while (!zuzen);
-
+				System.out.println("Zer errerbatu nahi duzu(Ostatua/Garraioa)");
+				String OG;
+				OG=sc.next();
+				if(OG.equalsIgnoreCase("Ostatua")) {
+					Erreserba_O eo=new Erreserba_O();
+					eo.IrakurriErrG(sc);
+					erreserbao.add(eo);
+				}
+				else if(OG.equalsIgnoreCase("Garraioa")) {
+					Erreserba_G eg=new Erreserba_G();
+					eg.IrakurriErrG(sc);
+					erreserbag.add(eg);
+				}
+				break;
+			case 8:
+				for(int i=0;i<bezeroa.size();i++) {
+					bezeroa.get(i).PantailaratuBezero();
+				}
+				
 				break;
 			}
 
@@ -642,6 +659,26 @@ public class Main {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
+		}
+		try {
+			FileOutputStream fos = new FileOutputStream("Fakturak.dat");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+			Faktura faktura2= new Faktura();
+			for (int i = 0; i < fakturak.size(); i++) {
+
+				faktura2 = fakturak.get(i);
+				oos.writeObject(faktura2);
+			}
+
+			oos.close();
+			fos.close();
+		} catch (FileNotFoundException eah) {
+			System.out.print("El archivo no existe");
+			eah.printStackTrace();
+		} catch (IOException eh) {
+			System.out.print("El archivo no existe");
+			eh.printStackTrace();
 		}
 	}
 
