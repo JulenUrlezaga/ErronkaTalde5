@@ -167,15 +167,15 @@ public class Main {
 				gar = sc.next();
 				if (gar.equalsIgnoreCase("busa")) {
 					for (int i = 0; i < bus.size(); i++) {
-						System.out.println(bus.get(i));
+						System.out.println(bus.get(i).getB_Jesarlekuak());
 					}
 				} else if (gar.equalsIgnoreCase("hegazkina")) {
 					for (int i = 0; i < hegazkina.size(); i++) {
-						System.out.println(hegazkina.get(i));
+						System.out.println(hegazkina.get(i).getH_Jesarlekuak());
 					}
 				} else if (gar.equalsIgnoreCase("itsasontzia")) {
 					for (int i = 0; i < itsasontzia.size(); i++) {
-						System.out.println(itsasontzia.get(i));
+						System.out.println(itsasontzia.get(i).getKamaroteak());
 					}
 				}
 				break;
@@ -254,7 +254,6 @@ public class Main {
 						String bnan;
 						boolean rep=true;
 						int c=0;
-						String erantzuna;
 						bnan=sc.next();
 						while(c<bezeroa.size()&&rep) {
 							if (bnan.equals(bezeroa.get(c).getNAN())) {
