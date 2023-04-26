@@ -43,6 +43,7 @@ public class Main {
 		ArrayList<Faktura> fakturak = new ArrayList<Faktura>();
 		Faktura faktura = new Faktura();
 		// Datu basetik datuak kopiatu
+		
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/BidaiAgentzia", "root", "");
 

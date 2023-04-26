@@ -15,7 +15,9 @@ public class Faktura implements Serializable, Fakturazioa {
 	private Date Irteera_data;
 	private Date Helmuga_data;
 	private double prezioa;
-
+	/**
+	 * Faktura klasearen defektusko eraikitzailea
+	 */
 	public Faktura() {
 		this.NAN = "";
 		this.Ordainketa_metodoa = 0;
@@ -24,7 +26,15 @@ public class Faktura implements Serializable, Fakturazioa {
 		this.Helmuga_data = new Date(0-0-0);
 		this.prezioa = 0;
 	}
-
+	/**
+	 * Faktura klasearen eraikitzailea pertsonalizatua
+	 * @param na String nan
+	 * @param om int ordainketa_metodoa
+	 * @param idg
+	 * @param a
+	 * @param as
+	 * @param d
+	 */
 	public Faktura(String na, int om, String idg, Date a, Date as, double d) {
 		this.NAN = na;
 		this.Ordainketa_metodoa = om;
