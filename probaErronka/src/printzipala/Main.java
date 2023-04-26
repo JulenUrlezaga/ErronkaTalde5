@@ -153,6 +153,7 @@ public class Main {
 			System.out.println("6- Ostatu berria sartu");
 			System.out.println("7- Erreserba bat egin");
 			System.out.println("8- Bezeroak ikusi");
+			System.out.println("9- Bezero berria sartu");
 			System.out.println("***********************************");
 			menu = sc.nextInt();
 			// aukerak
@@ -309,6 +310,12 @@ public class Main {
 				for(int i=0;i<bezeroa.size();i++) {
 					bezeroa.get(i).PantailaratuBezero();
 				}
+				
+				break;
+			case 9:
+				Bezeroa be=new Bezeroa();
+				be.IrakurriBezero(sc);
+				bezeroa.add(be);
 				
 				break;
 			}
