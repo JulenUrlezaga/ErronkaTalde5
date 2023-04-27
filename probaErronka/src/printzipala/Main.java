@@ -122,7 +122,7 @@ public class Main {
 		// Datu basetik datuak kopiatu
 
 		try {
-			FileInputStream fis = new FileInputStream("Eskaintzak.dat");
+			FileInputStream fis = new FileInputStream("Fakturak.dat");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			while (fis.available() > 0) {
