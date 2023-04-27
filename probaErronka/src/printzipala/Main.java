@@ -40,6 +40,15 @@ public class Main {
 		ArrayList<Itsasontzia> itsasontzia = new ArrayList<Itsasontzia>();
 		ArrayList<Faktura> fakturak = new ArrayList<Faktura>();
 		Faktura faktura = new Faktura();
+		Boolean bbezero=false;
+		Boolean bostatua=false;
+		Boolean berreserbag=false;
+		Boolean berreserbao=false;
+		Boolean bbus=false;
+		Boolean bhegazkin=false;
+		Boolean bitsasontzi=false;
+		Boolean bfaktura=false;
+		Boolean bgarraioa=false;
 		// Datu basetik datuak kopiatu
 
 		try {
@@ -234,14 +243,29 @@ public class Main {
 					Bus bus1 = new Bus();
 					bus1.IrakurriB(sc);
 					bus.add(bus1);
+					bbus=true;
+					bhegazkin=true;
+					bitsasontzi=true;
+					berreserbag=true;
+					bgarraioa=true;
 				} else if (gar.equalsIgnoreCase("hegazkina")) {
 					Hegazkina hegaz1 = new Hegazkina();
 					hegaz1.IrakurriH(sc);
 					hegazkina.add(hegaz1);
+					bbus=true;
+					bhegazkin=true;
+					bitsasontzi=true;
+					berreserbag=true;
+					bgarraioa=true;
 				} else if (gar.equalsIgnoreCase("itsasontzia")) {
 					Itsasontzia itsas1 = new Itsasontzia();
 					itsas1.IrakurriI(sc);
 					itsasontzia.add(itsas1);
+					bbus=true;
+					bhegazkin=true;
+					bitsasontzi=true;
+					berreserbag=true;
+					bgarraioa=true;
 				}
 				break;
 
@@ -251,6 +275,8 @@ public class Main {
 				Ostatua ost = new Ostatua();
 				ost.IrakurriOstatua(sc);
 				ostatu.add(ost);
+				bostatua=true;
+				berreserbao=true;
 				break;
 
 			case 7:
@@ -286,6 +312,7 @@ public class Main {
 						Bezeroa b1 = new Bezeroa();
 						do {
 							b1.IrakurriBezero(sc);
+							
 							try {
 								for (int i = 0; i < bezeroa.size(); i++) {
 									if (b1.getNAN().equals(bezeroa.get(i).getNAN())) {
@@ -300,6 +327,9 @@ public class Main {
 							}
 						} while (rep);
 						bezeroa.add(b1);
+						berreserbao=true;
+						berreserbag=true;
+						bbezero=true;
 
 					} else {
 						System.out.println("erantzun hori ez da onargarria, saiatu berriro");
@@ -314,10 +344,12 @@ public class Main {
 					Erreserba_O eo = new Erreserba_O();
 					eo.IrakurriErrG(sc);
 					erreserbao.add(eo);
+					berreserbao=true;
 				} else if (OG.equalsIgnoreCase("Garraioa")) {
 					Erreserba_G eg = new Erreserba_G();
 					eg.IrakurriErrG(sc);
 					erreserbag.add(eg);
+					berreserbag=true;
 				}
 				break;
 			case 8:
