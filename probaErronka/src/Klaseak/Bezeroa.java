@@ -125,7 +125,7 @@ public class Bezeroa {
 		Ordainketa_Metodoa = ordainketa_Metedoa;
 	}
 	/**
-	 * 
+	 * PantailaratuBezero()--> Datuak erakusten ditu
 	 */
 	public void PantailaratuBezero() {
 		System.out.println(

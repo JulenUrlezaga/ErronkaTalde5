@@ -80,6 +80,9 @@ public class Bus extends Garraioa {
 	}
 
 	@Override
+	/**
+	 * PantailaratuG()--> Datuak erakusten ditu
+	 */
 	public void PantailaratuG() {
 		// TODO Auto-generated method stub
 		System.out.println("Garraio ID :" + this.id_garraioa + ", Enpresa : " + this.enpresa + ", Jatorria : "
