@@ -26,8 +26,6 @@ import Klaseak.Hegazkina;
 import Klaseak.Itsasontzia;
 import Klaseak.Ostatua;
 
-
-
 public class Main {
 
 	public static void main(String[] args) {
@@ -43,7 +41,7 @@ public class Main {
 		ArrayList<Faktura> fakturak = new ArrayList<Faktura>();
 		Faktura faktura = new Faktura();
 		// Datu basetik datuak kopiatu
-		
+
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/BidaiAgentzia", "root", "");
 
@@ -138,7 +136,7 @@ public class Main {
 
 		// menua
 
-		int menu;
+		int menu = 0;
 		String gar;
 		String erreser;
 		boolean irten = true;
@@ -156,7 +154,14 @@ public class Main {
 			System.out.println("8- Bezeroak ikusi");
 			System.out.println("9- Bezero berria sartu");
 			System.out.println("***********************************");
-			menu = sc.nextInt();
+			try {
+				menu = sc.nextInt();
+			} catch (NumberFormatException adi) {
+				System.out.println("error");
+
+			} catch (InputMismatchException adi) {
+				System.out.println("error");
+			}
 			// aukerak
 			switch (menu) {
 
@@ -211,9 +216,14 @@ public class Main {
 				break;
 
 			case 4:
-				for (int i = 0; i < ostatu.size(); i++) {
-					ostatu.get(i).PantailaratuOstuta();
+				try {
+					for (int i = 0; i < ostatu.size(); i++) {
+						ostatu.get(i).PantailaratuOstuta();
+					}
+				} catch (IndexOutOfBoundsException a) {
+					System.out.println("Error");
 				}
+
 				break;
 
 			case 5:
@@ -254,21 +264,21 @@ public class Main {
 						zuzen = true;
 						System.out.println("Sartu zuren NAN zenbakia:");
 						String bnan;
-						boolean rep=true;
-						int c=0;
-						bnan=sc.next();
-						while(c<bezeroa.size()&&rep) {
+						boolean rep = true;
+						int c = 0;
+						bnan = sc.next();
+						while (c < bezeroa.size() && rep) {
 							if (bnan.equals(bezeroa.get(c).getNAN())) {
 								rep = false;
-								c=c++;
+								c = c++;
 							} else {
 								System.out.println("Zure nan zenbakia ez da aurkitu, saiatu berriro");
 								bnan = sc.next();
 								rep = true;
-								
+
 							}
-						}					
-						
+						}
+
 					} else if (bezn.equalsIgnoreCase("ez")) {
 						zuzen = true;
 						boolean rep = false;
@@ -276,48 +286,93 @@ public class Main {
 						Bezeroa b1 = new Bezeroa();
 						do {
 							b1.IrakurriBezero(sc);
-							for (int i = 0; i < bezeroa.size(); i++) {
-								if (b1.getNAN().equals(bezeroa.get(i).getNAN())) {
-									System.out.println("Beste bezero baten zenbakia da hori, saiatu berriro");
-									rep = true;
-								} else {
-									rep = false;
+							try {
+								for (int i = 0; i < bezeroa.size(); i++) {
+									if (b1.getNAN().equals(bezeroa.get(i).getNAN())) {
+										System.out.println("Beste bezero baten zenbakia da hori, saiatu berriro");
+										rep = true;
+									} else {
+										rep = false;
+									}
 								}
+							} catch (IndexOutOfBoundsException a) {
+								System.out.println("Error");
 							}
 						} while (rep);
 						bezeroa.add(b1);
-						
+
 					} else {
 						System.out.println("erantzun hori ez da onargarria, saiatu berriro");
 						zuzen = false;
 					}
-					
+
 				} while (!zuzen);
 				System.out.println("Zer errerbatu nahi duzu(Ostatua/Garraioa)");
 				String OG;
-				OG=sc.next();
-				if(OG.equalsIgnoreCase("Ostatua")) {
-					Erreserba_O eo=new Erreserba_O();
+				OG = sc.next();
+				if (OG.equalsIgnoreCase("Ostatua")) {
+					Erreserba_O eo = new Erreserba_O();
 					eo.IrakurriErrG(sc);
 					erreserbao.add(eo);
-				}
-				else if(OG.equalsIgnoreCase("Garraioa")) {
-					Erreserba_G eg=new Erreserba_G();
+				} else if (OG.equalsIgnoreCase("Garraioa")) {
+					Erreserba_G eg = new Erreserba_G();
 					eg.IrakurriErrG(sc);
 					erreserbag.add(eg);
 				}
 				break;
 			case 8:
-				for(int i=0;i<bezeroa.size();i++) {
-					bezeroa.get(i).PantailaratuBezero();
+				try {
+					for (int i = 0; i < bezeroa.size(); i++) {
+						bezeroa.get(i).PantailaratuBezero();
+					}
+				} catch (IndexOutOfBoundsException a) {
+					System.out.println("Error");
 				}
-				
+
 				break;
 			case 9:
-				Bezeroa be=new Bezeroa();
+				Bezeroa be = new Bezeroa();
 				be.IrakurriBezero(sc);
 				bezeroa.add(be);
-				
+
+				break;
+			case 10:
+
+				Faktura fa1 = new Faktura();
+				System.out.println("Busak : ");
+				try {
+					for (int i = 0; i < bus.size(); i++) {
+						bus.get(i).PantailaratuG();
+					}
+				} catch (IndexOutOfBoundsException a) {
+					System.out.println("Error");
+				}
+				System.out.println("Hegakinak : ");
+				try {
+					for (int i = 0; i < hegazkina.size(); i++) {
+						hegazkina.get(i).PantailaratuG();
+					}
+				} catch (IndexOutOfBoundsException a) {
+					System.out.println("Error");
+				}
+				System.out.println("Itsasontziak : ");
+				try {
+					for (int i = 0; i < itsasontzia.size(); i++) {
+						itsasontzia.get(i).PantailaratuG();
+					}
+				} catch (IndexOutOfBoundsException a) {
+					System.out.println("Error");
+				}
+				System.out.println("Ostautak : ");
+				try {
+					for (int i = 0; i < ostatu.size(); i++) {
+						ostatu.get(i).PantailaratuOstuta();
+					}
+				} catch (IndexOutOfBoundsException a) {
+					System.out.println("Error");
+				}
+				fa1.IrakurriFak(sc);
+				fakturak.add(fa1);
 				break;
 			}
 
@@ -671,7 +726,7 @@ public class Main {
 			FileOutputStream fos = new FileOutputStream("Fakturak.dat");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-			Faktura faktura2= new Faktura();
+			Faktura faktura2 = new Faktura();
 			for (int i = 0; i < fakturak.size(); i++) {
 
 				faktura2 = fakturak.get(i);
