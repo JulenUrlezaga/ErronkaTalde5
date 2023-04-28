@@ -548,7 +548,7 @@ public class Main {
 				NAN = bezeroa.get(pos).getNAN();
 				izena = bezeroa.get(pos).getIzena();
 				abizenak = bezeroa.get(pos).getAbizenak();
-				telefono = bezeroa.get(pos).getNAN();
+				telefono = bezeroa.get(pos).getTelefono();
 				email = bezeroa.get(pos).getEmail();
 				ordainketa_metodoa = bezeroa.get(pos).getOrdainketa_Metodoa();
 				col = "insert into bezeroa values ('" + NAN + "','" + izena + "','" + abizenak + "','" + telefono
@@ -579,7 +579,7 @@ public class Main {
 				ostatu_mota = ostatu.get(pos).getOstatu_Mota();
 				izena = ostatu.get(pos).getIzena();
 				izarrak = ostatu.get(pos).getIzarrak();
-				col = "insert into ostatua values (" + ID_ostatua + ",'" + lekua + "','" + ostatu_mota + "','" + izena
+				col = "insert into ostatua values (" + ID_ostatua + ",'" + izena + "','" + lekua + "','" + ostatu_mota
 						+ "'," + izarrak + ");";
 				st.executeUpdate(col);
 			}
