@@ -434,10 +434,16 @@ public class Mainproba {
 					} catch (IndexOutOfBoundsException a) {
 						System.out.println("Error");
 					}
-					fa1.IrakurriFak(sc);
+					try {
+						fa1.IrakurriFak(sc);
+					}catch(InputMismatchException ime) {
+						ime.printStackTrace();
+						LOGGER.getHandlers();				
+					}
 					
 					fakturak.add(fa1);
 					bfaktura = true;
+					
 					break;
 				}
 
