@@ -157,7 +157,7 @@ public class Main {
 			System.out.println("2- Garraioaren geltokiak ikusi");
 			System.out.println("3- Erreserba baten prezioa ikusi");
 			System.out.println("4- Ostatuak ikusi");
-			System.out.println("5- garraio berriak sartu");
+			System.out.println("5- Garraio berriak sartu");
 			System.out.println("6- Ostatu berria sartu");
 			System.out.println("7- Erreserba bat egin");
 			System.out.println("8- Bezeroak ikusi");
@@ -179,7 +179,7 @@ public class Main {
 				break;
 
 			case 1:
-				System.out.println("Zein garraioren jesarleku libreak ikusi nahi dituzu?");
+				System.out.println("Zein garraioren jesarleku libreak ikusi nahi dituzu? (busa,hegazkina,itsasontzia)");
 				gar = sc.next();
 				if (gar.equalsIgnoreCase("busa")) {
 					for (int i = 0; i < bus.size(); i++) {
@@ -201,15 +201,17 @@ public class Main {
 				gar = sc.next();
 				if (gar.equalsIgnoreCase("busa")) {
 					for (int i = 0; i < bus.size(); i++) {
-						System.out.println(bus.get(i));
+						System.out.println(bus.get(i).getGeltokiak());
 					}
 				} else if (gar.equalsIgnoreCase("hegazkina")) {
 					for (int i = 0; i < hegazkina.size(); i++) {
-						System.out.println(hegazkina.get(i));
+						System.out.println(hegazkina.get(i).getHelmuga());
+						System.out.println(hegazkina.get(i).getJatorria());
 					}
 				} else if (gar.equalsIgnoreCase("itsasontzia")) {
 					for (int i = 0; i < itsasontzia.size(); i++) {
-						System.out.println(itsasontzia.get(i));
+						System.out.println(itsasontzia.get(i).getJatorria());
+						System.out.println(itsasontzia.get(i).getHelmuga());
 					}
 				}
 				break;
@@ -366,7 +368,7 @@ public class Main {
 				Bezeroa be = new Bezeroa();
 				be.IrakurriBezero(sc);
 				bezeroa.add(be);
-
+				bbezero=true;
 				break;
 			case 10:
 
@@ -405,6 +407,7 @@ public class Main {
 				}
 				fa1.IrakurriFak(sc);
 				fakturak.add(fa1);
+				bfaktura=true;
 				break;
 			}
 
@@ -414,6 +417,7 @@ public class Main {
 		// menu
 
 		// Datuak ezabatu
+		if(bbus) {
 		try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
@@ -427,8 +431,8 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
-
-		try {
+		}
+		if(bhegazkin){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -441,8 +445,8 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
-
-		try {
+		}
+		if(bitsasontzi){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -455,8 +459,8 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
-
-		try {
+	}
+		if(berreserbao){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -469,8 +473,8 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
-
-		try {
+}
+		if(berreserbag){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -483,8 +487,8 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
-
-		try {
+		}
+		if(bgarraioa){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -497,8 +501,8 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
-
-		try {
+		}
+		if(bostatua){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -511,8 +515,8 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
-
-		try {
+		}
+		if(bbezero){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -525,10 +529,11 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
+		}
 		// Datuak ezabatu
 
 		// Datuak sartu
-		try {
+		if(bbezero){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -557,8 +562,8 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
-
-		try {
+		}
+		if(bostatua){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -585,8 +590,8 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
-
-		try {
+		}
+		if(bgarraioa){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -629,8 +634,8 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
-
-		try {
+	}
+		if(berreserbag){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -657,8 +662,8 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
-
-		try {
+		}
+		if(berreserbao){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -685,8 +690,8 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
-
-		try {
+	}
+		if(bitsasontzi){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -709,7 +714,7 @@ public class Main {
 			System.out.println("Error de conexion");
 		}
 
-		try {
+		if(bhegazkin){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -731,8 +736,8 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
 		}
-
-		try {
+		}
+		if(bbus){try {
 			String col = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bidaiagentzia", "root", "");
 			Statement st = conexion.createStatement();
@@ -742,7 +747,7 @@ public class Main {
 
 			for (int pos = 0; pos < bus.size(); pos++) {
 				ID_garraio = bus.get(pos).getId_garraioa();
-				Geltokiak = bus.get(pos).getEnpresa();
+				Geltokiak = bus.get(pos).getGeltokiak();
 				B_Jesarlekuak = bus.get(pos).getB_Jesarlekuak();
 				col = "insert into bus values ('" + ID_garraio + "','" + Geltokiak + "'," + B_Jesarlekuak + ");";
 				st.executeUpdate(col);
@@ -753,8 +758,8 @@ public class Main {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Error de conexion");
-		}
-		try {
+		}}
+		if(bfaktura){try {
 			FileOutputStream fos = new FileOutputStream("Fakturak.dat");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
@@ -773,7 +778,8 @@ public class Main {
 		} catch (IOException eh) {
 			System.out.print("El archivo no existe");
 			eh.printStackTrace();
-		}
+		}}
 	}
 
+}
 }
