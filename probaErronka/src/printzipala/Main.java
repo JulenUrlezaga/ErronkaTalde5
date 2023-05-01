@@ -148,7 +148,7 @@ public class Main {
 		int menu = 0;
 		String gar;
 		String erreser;
-		boolean irten = true;
+		boolean irten = false;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Ongi etorri gure bidai agentziaren programara");
 		do {
@@ -353,6 +353,7 @@ public class Main {
 					erreserbag.add(eg);
 					berreserbag=true;
 				}
+			
 				break;
 			case 8:
 				try {
@@ -369,6 +370,8 @@ public class Main {
 				be.IrakurriBezero(sc);
 				bezeroa.add(be);
 				bbezero=true;
+				berreserbag=true;
+				berreserbao=true;
 				break;
 			case 10:
 

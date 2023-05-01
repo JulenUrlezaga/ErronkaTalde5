@@ -27,8 +27,8 @@ public class Erreserba_O {
 	public Erreserba_O() {
 		this.NAN = "";
 		this.ID_Ostatua = "";
-		this.Sarrera_data = new Date(0 / 0 / 0);
-		this.Irteera_data = new Date(0 / 0 / 0);
+		this.Sarrera_data = new Date(0-0-0);
+		this.Irteera_data = new Date(0-0-0);
 		this.Prezioa = 0;
 	}
 	
@@ -139,18 +139,20 @@ public class Erreserba_O {
 	 * @param teklatua Datuak konpilatzen ditu
 	 */
 	public void IrakurriErrG(Scanner teklatua) {
-		System.out.println();
+		System.out.println("Nan: ");
 		this.NAN = teklatua.next();
-		System.out.println();
+		System.out.println("Ostatuaren ID-a: ");
 		this.ID_Ostatua = teklatua.next();
 		System.out.println();
 		try {
+			System.out.println("Data: (DD/MM/YYYY)");
 			this.Sarrera_data = new SimpleDateFormat("dd/MM/yyyy").parse(teklatua.nextLine());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		System.out.println();
 		try {
+			System.out.println("Data: (DD/MM/YYYY)");
 			this.Irteera_data = new SimpleDateFormat("dd/MM/yyyy").parse(teklatua.nextLine());
 		} catch (ParseException e) {
 			e.printStackTrace();

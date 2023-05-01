@@ -17,8 +17,8 @@ public class Erreserba_G {
 	public Erreserba_G() {
 		this.NAN = "";
 		this.ID_garraio = "";
-		this.Helmuga_data = new Date(0 / 0 / 0);
-		this.Irteera_data = new Date(0 / 0 / 0);
+		this.Helmuga_data = new Date(0-0-0);
+		this.Irteera_data = new Date(0-0-0);
 		this.prezioa = 0;
 	}
 	/**
@@ -116,18 +116,20 @@ public class Erreserba_G {
 	 * @param teklatua  datuak kopilatzen ditu
 	 */
 	public void IrakurriErrG(Scanner teklatua) {
-		System.out.println();
+		System.out.println("Nan:");
 		this.NAN = teklatua.next();
-		System.out.println();
+		System.out.println("Garraioaren ID-a");
 		this.ID_garraio = teklatua.next();
 		System.out.println();
 		try {
+			System.out.println("Data: (DD/MM/YYYY)");
 			this.Irteera_data = new SimpleDateFormat("dd/MM/yyyy").parse(teklatua.nextLine());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		System.out.println();
 		try {
+			System.out.println("Data: (DD/MM/YYYY)");
 			this.Helmuga_data = new SimpleDateFormat("dd/MM/yyyy").parse(teklatua.nextLine());
 		} catch (ParseException e) {
 			e.printStackTrace();
