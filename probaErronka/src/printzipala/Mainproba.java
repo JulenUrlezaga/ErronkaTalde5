@@ -856,7 +856,7 @@ public class Mainproba {
 
 		} catch (IOException a) {
 			System.out.println("Se liado parda");
-			System.out.println();
+			LOGGER.getHandlers();
 		}
 	}
 
